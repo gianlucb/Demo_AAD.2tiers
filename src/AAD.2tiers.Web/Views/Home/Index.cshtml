@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <h1>Welcome <span class="label label-info">@ViewBag.User</span> !</h1>
+</div>
+
+<div class="row">
+    <h1>Api Layer</h1>
+    <h2><span class="label label-default">@ViewBag.Message</span></h2>
+</div>
+<div class="row">
+    <h1>Tokens</h1>
+    <div class="panel panel-danger col-lg-6" style="table-layout: fixed;word-wrap: break-word;">
+        <h1 class="panel-heading">Access Token</h1>
+        <h2 class="panel-body">@ViewBag.AccessToken</h2>
+    </div>
+    <div class="panel panel-success col-lg-6" style="table-layout: fixed;word-wrap: break-word;">
+        <h1 class="panel-heading">Id Token</h1>
+        <h2 class="panel-body">@ViewBag.IdToken</h2>
+    </div>
+</div>
+<div class="row">
+    <h4>use <a href="https://jwt.io/" target="_blank">JWT.IO</a> to visualize the tokens</h4>
+</div>
