@@ -23,7 +23,7 @@ Using the Azure portal you need to:
 
 To automated these tasks you can use the powershell script **Create2TiersAADDemo.ps1**.
 
-Last point is edit the **appsettings.json** files with your settings:
+Last, you must update the **appsettings.json** file with your settings:
 
 ```json
     "Domain": "ZZZZZZZZZ.onmicrosoft.com",
