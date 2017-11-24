@@ -48,6 +48,11 @@ namespace Microsoft.AspNetCore.Authentication
                 options.UseTokenLifetime = true;
                 options.CallbackPath = _azureOptions.CallbackPath;
                 options.RequireHttpsMetadata = false;
+
+                //custom scopes defined in the manifest
+                options.Scope.Add("aad.2tiers.write");
+                options.Scope.Add("aad.2tiers.read");
+
             }
 
             public void Configure(OpenIdConnectOptions options)

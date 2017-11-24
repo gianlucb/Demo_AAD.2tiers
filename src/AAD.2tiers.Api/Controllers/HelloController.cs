@@ -16,6 +16,20 @@ namespace AAD._2tiers.Api.Controllers
         {
             return "Hello from API";
         }
-       
+
+        [HttpGet]
+        [Authorize(Policy = "Read")]
+        public string GetWithReadScope()
+        {
+            return "Hello from API (Read Scope)";
+        }
+
+        [HttpGet]
+        [Authorize(Policy = "Write")]
+        public string GetWithWriteScope()
+        {
+            return "Hello from API (Write Scope)";
+        }
+
     }
 }
