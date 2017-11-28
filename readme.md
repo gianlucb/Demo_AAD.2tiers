@@ -6,7 +6,7 @@ This demonstrate how to retrieve an access token from AzureAd, using the implici
 ![scenario](images/simple-AAD.png)
 
 ## Document
-For more detailed information read the following [post](https://blogs.msdn.microsoft.com/gianlucb/2017/10/04/access-an-azure-ad-secured-api-with-asp-net-core-2-0/?preview_id=255&preview_nonce=7228ed3d1b&_thumbnail_id=265&preview=true)
+For more detailed information read the following [post](https://blogs.msdn.microsoft.com/gianlucb/2017/10/04/access-an-azure-ad-secured-api-with-asp-net-core-2-0)
 
 
 ## Setup
@@ -49,8 +49,8 @@ Starting from the Api definition you must add an entry in the **OAuth2Permission
     },
 ```
 
-this creates the scopes for the Api layer, then you can grant access to them in the Web app settings.
-Navigate to the Web app **Required Permission** tab and check all scopes:
+this creates the scopes for the Api layer, then you can grant access to them in the FrontEnd app settings.
+Navigate to the FrontEnd app **Required Permission** tab and check all the scopes:
 
 ![scopes](images/scopes.png)
 
