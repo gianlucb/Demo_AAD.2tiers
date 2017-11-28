@@ -23,6 +23,33 @@ Using the Azure portal you need to:
 
 To automated these tasks you can use the powershell script **Create2TiersAADDemo.ps1**.
 
+## Scopes
+To add custom scopes you need to manually edit the application manifest in the Azure portal.
+Starting from the Api definition you must add an entry in the **OAuth2Permission** section:
+
+```json
+{
+      "adminConsentDescription": "Allow the application access to scope B APIs",
+      "adminConsentDisplayName": "Scope B access",
+      "id": "b69ee3c9-c40d-4f2a-ac80-961cd1534e49",
+      "isEnabled": true,
+      "type": "User",
+      "userConsentDescription": "Allow the application access to scope B APIs",
+      "userConsentDisplayName": "Scope B access",
+      "value": "aad.scopeB"
+    },
+    {
+      "adminConsentDescription": "Allow the application access to scope A APIs",
+      "adminConsentDisplayName": "Scope A access",
+      "id": "b69ee3c9-c40d-4f2a-ac80-961cd1534e48",
+      "isEnabled": true,
+      "type": "User",
+      "userConsentDescription": "Allow the application access to scope A APIs",
+      "userConsentDisplayName": "Scope A access",
+      "value": "aad.scopeA"
+    },
+```
+
 Last, you must update the **appsettings.json** file with your settings:
 
 ```json
