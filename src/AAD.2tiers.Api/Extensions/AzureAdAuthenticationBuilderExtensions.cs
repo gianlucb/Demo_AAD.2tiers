@@ -32,7 +32,7 @@ namespace Microsoft.AspNetCore.Authentication
             {
                 //change here to different string comparision if do not want to use GUIDs
                 options.Audience = _azureOptions.ClientId;
-                options.Authority = $"{_azureOptions.Instance}{_azureOptions.TenantId}";
+                options.Authority = $"{_azureOptions.Instance}{_azureOptions.TenantId}/v2.0"; //for V2.0 endpoint
             }
 
             public void Configure(JwtBearerOptions options)
