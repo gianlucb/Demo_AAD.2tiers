@@ -1,7 +1,7 @@
-# Azure AD Secured Api access (Asp.Net Core 2.0)
+# Azure AD Secured Api access (Asp.Net Core 2.0) - Scopes - V2.0 endpoint
 
 Small example of a two tiers application with a FrontEnd application that calls a backend Api application. Both coded with **Asp.Net Core 2.0** and secured with the same Azure Ad tenant (directory).
-This demonstrate how to retrieve an access token from AzureAd, using the implicit flow (**OpenIdConnect**):
+This demonstrate how to retrieve an access token from AzureAd, using the implicit flow (**OpenIdConnect**) and custom scopes:
 
 ![scenario](images/simple-AAD.png)
 
@@ -10,18 +10,17 @@ For more detailed information read the following [post](https://blogs.msdn.micro
 
 
 ## Setup
-Using the Azure portal you need to:
+Using the new [Application registration portal](https://apps.dev.microsoft.com/portal/application) you need to:
 + create two Azure Applications in your tenant
-    + FrontEnd
-        + Reply Url: [http://localhost:10001/signin-oidc](#)
-        + App ID Uri: [http://AAD.2tiers.Web"](#)
-    + Api
+    + FrontEnd (Web platform)
+        + Reply Url: [http://localhost:10001/signin-oidc](#)    
+        + Allow Implict Flow
+    + Api (Api platform)
         + Reply Url: [http://localhost:10000](#)
-        + App ID Uri: [http://AAD.2tiers.Api](#)
-+ allows the FrontEnd application to access Api (permission tab, add)
-+ Edit the manifest of the FrontEnd application and enable the implicit flow (**"oauth2AllowImplicitFlow"**: **true**).
+        + App ID Uri: [api://aad.2tiers.api](#)
+        + Add two custom scopes: **aad.scopeA** and **aad.scopeB**
 
-To automated these tasks you can use the powershell script **Create2TiersAADDemo.ps1**.
++ allows the FrontEnd application to access Api scopes (**Pre-authorized application** section, select only the **access_as_user** scope)
 
 Last, you must update the **appsettings.json** file with your settings:
 
