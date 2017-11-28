@@ -1,4 +1,6 @@
-﻿#  getting the right TENANT ID (if multiple subscriptions)
+﻿#  download AAD module with "Install-Module -Name AzureAD" (https://www.powershellgallery.com/packages/AzureAD/2.0.0.131)
+
+#  getting the right TENANT ID (if multiple subscriptions)
 $login = Login-AzureRmAccount
 $subs = Get-AzureRmSubscription
 
@@ -30,13 +32,20 @@ $readUserAccess = [Microsoft.Open.AzureAD.Model.RequiredResourceAccess]@{
     Type = "Scope"}}
  
 
-#  Create Api App
+# Create Api App
 Write-Host "Creating API app..."
 $apiApp = New-AzureADApplication -DisplayName AAD.2tiers.Api -IdentifierUris "http://AAD.2tiers.Api" -Oauth2AllowImplicitFlow $true -Homepage "http://localhost:10000" -ReplyUrls "http://localhost:10000" -RequiredResourceAccess $readUserAccess
 
 # Create a Service Principal for the Api
 Write-Host "Creating Service Principal for API app..."
-$spApi = New-AzureADServicePrincipal -AppId $apiApp.AppId
+$spApi = New-AzureADServicePrincipal -AppId $apiApp.AppId 
+
+#$spApi.Oauth2Permissions.Add([Microsoft.Open.AzureAD.Model.OAuth2Permission]@{
+ #   AdminConsentDescription = "test";
+ #   Type = "User";
+ #   Value = "aad.2tiers.read"
+#});
+
 
 #  Grab the user-impersonation permission for Api 
 $apiUserImpersonation = $spApi.Oauth2Permissions | ?{$_.Value -eq "user_impersonation"}
@@ -56,10 +65,10 @@ $webApp = New-AzureADApplication -DisplayName AAD.2tiers.Web -IdentifierUris "ht
 Write-Host "Creating Service Principal for Web app..."
 $spWebApp = New-AzureADServicePrincipal -AppId $webApp.AppId
 
-Write-Host "Created Web App"
+Write-Host "Created Web App registration"
 Write-Host "-----------------------"
 Write-Host $webApp 
 
-Write-Host "Created Api App"
+Write-Host "Created Api App registration"
 Write-Host "-----------------------"
 Write-Host $apiApp 

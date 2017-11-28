@@ -42,16 +42,11 @@ namespace Microsoft.AspNetCore.Authentication
                 //save tokens in the request context
                 options.SaveTokens = true;
 
-
                 options.ClientId = _azureOptions.ClientId;
                 options.Authority = $"{_azureOptions.Instance}{_azureOptions.TenantId}";
                 options.UseTokenLifetime = true;
                 options.CallbackPath = _azureOptions.CallbackPath;
                 options.RequireHttpsMetadata = false;
-
-                //custom scopes defined in the manifest
-                options.Scope.Add("aad.2tiers.write");
-                options.Scope.Add("aad.2tiers.read");
 
             }
 
