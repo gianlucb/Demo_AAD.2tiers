@@ -1,3 +1,5 @@
+# Work in progress...
+
 # Azure AD Secured Api access (Asp.Net Core 2.0) - Scopes - V2.0 endpoint
 
 Small example of a two tiers application with a FrontEnd application that calls a backend Api application. Both coded with **Asp.Net Core 2.0** and secured with the same Azure Ad tenant (directory).
