@@ -1,4 +1,4 @@
- # Demo - Azure AD Secured Api access (Asp.Net Core 2.0)
+# Demo - Azure AD Secured Api Access (Asp.Net Core 2.0)
 
 Small example of a two tiers application with a FrontEnd application that calls a backend Api application. Both coded with **Asp.Net Core 2.0** and secured with the same Azure Ad tenant (directory).
 This demonstrate how to retrieve an access token from AzureAd, using the implicit flow (**OpenIdConnect**):
