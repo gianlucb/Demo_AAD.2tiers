@@ -42,12 +42,16 @@ namespace Microsoft.AspNetCore.Authentication
                 //save tokens in the request context
                 options.SaveTokens = true;
 
-
                 options.ClientId = _azureOptions.ClientId;
                 options.Authority = $"{_azureOptions.Instance}{_azureOptions.TenantId}";
                 options.UseTokenLifetime = true;
                 options.CallbackPath = _azureOptions.CallbackPath;
                 options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new IdentityModel.Tokens.TokenValidationParameters()
+                {
+                    ValidateIssuer = false
+                }; //to allow everybody , otherwise I need to set the list of tenants
+
             }
 
             public void Configure(OpenIdConnectOptions options)

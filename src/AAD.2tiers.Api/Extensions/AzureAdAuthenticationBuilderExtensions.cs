@@ -33,6 +33,11 @@ namespace Microsoft.AspNetCore.Authentication
                 //change here to different string comparision if do not want to use GUIDs
                 options.Audience = _azureOptions.ClientId;
                 options.Authority = $"{_azureOptions.Instance}{_azureOptions.TenantId}";
+                options.TokenValidationParameters = new IdentityModel.Tokens.TokenValidationParameters()
+                {
+                    ValidateIssuer = false
+                };
+
             }
 
             public void Configure(JwtBearerOptions options)

@@ -5,10 +5,15 @@
 <div class="row">
     <h1>Welcome <span class="label label-info">@ViewBag.User</span> !</h1>
 </div>
+<div class="row">
+    <h4><a href="https://login.microsoftonline.com/common/oauth2/v2.0/logout">Logout</a></h4>
+</div>
 
 <div class="row">
     <h1>Api Layer</h1>
-    <h2><span class="label label-default">@ViewBag.Message</span></h2>
+    <h2>Normal: <span class="label label-default">@ViewBag.Message</span></h2>
+    <h2>Scope A: <span class="label label-default">@ViewBag.MessageScopeA</span></h2>
+    <h2>Scope B: <span class="label label-default">@ViewBag.MessageScopeB</span></h2>
 </div>
 <div class="row">
     <h1>Tokens</h1>

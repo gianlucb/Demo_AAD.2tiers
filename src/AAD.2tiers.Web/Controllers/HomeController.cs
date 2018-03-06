@@ -26,16 +26,38 @@ namespace AAD._2tiers.Web.Controllers
             ViewBag.AccessToken = accessToken;
             ViewBag.IdToken = idToken;
 
+            WebClient client = new WebClient();
+            client.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {accessToken}");
+
             try
             {
-                WebClient client = new WebClient();
-                client.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {accessToken}");
-                ViewBag.Message = client.DownloadString("http://localhost:10000/api/Hello");
+                ViewBag.Message = client.DownloadString("http://localhost:10000/Hello");
             }
             catch (Exception ex)
             {
-                ViewBag.Message = "Error accessing APi layer " + ex.Message;
+                ViewBag.Message = "Error: " + ex.Message;
             }
+
+            try
+            {
+                ViewBag.MessageScopeA = client.DownloadString("http://localhost:10000/Hello/ScopeA");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.MessageScopeA = "Error: " + ex.Message;
+            }
+
+            try
+            {
+                ViewBag.MessageScopeB = client.DownloadString("http://localhost:10000/Hello/ScopeB");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.MessageScopeB = "Error: " + ex.Message;
+            }
+
+            
+            
 
             return View();
         }

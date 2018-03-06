@@ -31,6 +31,15 @@ namespace AAD._2tiers.Api
             })
             .AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 
+            //policies for scope based authorization
+            services.AddAuthorization(options => {
+                  //custom scopes
+                options.AddPolicy("A",
+                        policyBuilder => policyBuilder.Requirements.Add(new HasScopeRequirement("aad.scopeA")));
+                options.AddPolicy("B",
+        policyBuilder => policyBuilder.Requirements.Add(new HasScopeRequirement("aad.scopeB")));
+            });
+
             services.AddMvc();
         }
 
